@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<link rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+	
+<link rel="stylesheet" href="css/main.css" />
+
+<title>Registration</title>
+</head>
+<body >
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#" th:href="@{/}">Web Application :: With Live Chat Support</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<br>
+	<br>
+	<div class="container">
+		<h2>Welcome to Web Application With Live Chat Box Support</h2>
+
+		<H3 style="background: antiquewhite;width: 410px;">
+			Welcome <span sec:authentication="principal.username">User</span>
+		</H3>
+		
+		<div>
+		<a href="http://localhost:8080/students/signup" class="btn btn-primary"><i
+							class="fas fa-user-plus ml-2"> Add Student</i></a>
+		<br><br>					
+		<a href="http://localhost:8080/students/list" class="btn btn-primary"><i
+							class="fas fa-user-plus ml-2"> List Student</i></a>
+		</div>
+	</div>
+	
+	<div></div>
+
+	<div>
+		<noscript>
+			<h2>Sorry! Your browser doesn't support Javascript</h2>
+		</noscript>
+
+		<div id="username-page">
+			<div class="username-page-container" style="margin-right: 10px;padding-right: 20px;width: 300px;padding-left: 40px;margin-top: 0px;">
+				<h1 class="title">Global Live Chat Box<br>Type your username<br></h1>
+				<form id="usernameForm" name="usernameForm">
+					<div class="form-group">
+						<input type="text" id="name" placeholder="Username"
+							autocomplete="off" class="form-control" />
+					</div>
+					<div class="form-group">
+						<button type="submit" class="accent username-submit">Start
+							Chatting</button>
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<div id="chat-page" class="hidden">
+			<div class="chat-container" style="margin-right: 30px;margin-left: 905px;">
+				<div class="chat-header">
+					<h2>Global Live Chat Box</h2>
+				</div>
+				<div class="connecting">Connecting...</div>
+				<ul id="messageArea">
+
+				</ul>
+				<form id="messageForm" name="messageForm" nameForm="messageForm">
+					<div class="form-group">
+						<div class="input-group clearfix">
+							<input type="text" id="message" placeholder="Type a message..."
+								autocomplete="off" class="form-control" />
+							<button type="submit" class="primary">Send</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+		<script src="js/main.js"></script>
+
+	</div>
+
+	<script type="text/javascript"
+		th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
+	<script type="text/javascript"
+		th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+
+</body>
+</html>
